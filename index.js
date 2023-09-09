@@ -62,12 +62,12 @@ app.post('/api/reservations', (req,res) => {
     res.status(201).json(reservation)
 });
 
-app.get('/api/reports/:userId'), (req,res)=>{
+app.get('/api/reservations/:userId', (req, res) => {
     const userId = req.params.userId;
-    const userReservations = reservations.filter(r= r.userId === userId);
-
+    const userReservations = reservations.filter(r => r.userId === userId);
+  
     res.json(userReservations);
-}
+});
 
 // Datos semilla para usuarios
 const seedUsers = [
