@@ -50,6 +50,18 @@ app.put('/api/users/:id', (req, res) => {
     res.json(user);
   });
 
+  app.post('api/reservations', (req,res) => {
+    const reservation = {
+        id : uuidv4(),
+        userId : req.body.userId,
+        application: req.body.application,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate
+    };
+    reservations.push(reservation);
+    res.status(201).json(reservation)
+  })
+
 
 
 
