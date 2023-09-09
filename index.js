@@ -42,7 +42,15 @@ app.put('/api/users/:id', (req, res) => {
     res.json(user);
   });
 
-  
+  app.delete('/api/users/:id', (req, res) => {
+    const user = users.find(u => u.id === req.params.id);
+    if (!user) return res.status(404).send('Usuario no encontrado');
+    const index = users.indexOf(user);
+    users.splice(index, 1);
+    res.json(user);
+  });
+
+
 
 
 
