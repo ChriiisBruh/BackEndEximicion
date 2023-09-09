@@ -69,7 +69,54 @@ app.put('/api/users/:id', (req, res) => {
     res.json(userReservations);
   }
 
-
+// Datos semilla para usuarios
+const seedUsers = [
+    {
+      id: uuidv4(),
+      name: "Usuario 1",
+      email: "usuario1@example.com",
+    },
+    {
+      id: uuidv4(),
+      name: "Usuario 2",
+      email: "usuario2@example.com",
+    },
+    {
+      id: uuidv4(),
+      name: "Usuario 3",
+      email: "usuario3@example.com",
+    },
+  ];
+  
+  // Datos semilla para reservas
+const seedReservations = [
+    {
+      id: uuidv4(),
+      userId: seedUsers[0].id,
+      application: "Aplicación A",
+      startDate: "2023-09-10",
+      endDate: "2023-09-20",
+    },
+    {
+      id: uuidv4(),
+      userId: seedUsers[1].id,
+      application: "Aplicación B",
+      startDate: "2023-09-15",
+      endDate: "2023-09-25",
+    },
+    {
+      id: uuidv4(),
+      userId: seedUsers[0].id,
+      application: "Aplicación C",
+      startDate: "2023-09-12",
+      endDate: "2023-09-22",
+    },
+];
+  
+  
+  users.push(...seedUsers);
+  reservations.push(...seedReservations);
+  
 
 
 
