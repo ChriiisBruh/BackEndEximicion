@@ -50,7 +50,7 @@ app.put('/api/users/:id', (req, res) => {
     res.json(user);
   });
 
-  app.post('api/reservations', (req,res) => {
+  app.post('/api/reservations', (req,res) => {
     const reservation = {
         id : uuidv4(),
         userId : req.body.userId,
@@ -60,7 +60,14 @@ app.put('/api/users/:id', (req, res) => {
     };
     reservations.push(reservation);
     res.status(201).json(reservation)
-  })
+  });
+
+  app.get('/api/reports/:userId'), (req,res)=>{
+    const userId = req.params.userId;
+    const userReservations = reservations.filter(r= r.userId === userId);
+
+    res.json(userReservations);
+  }
 
 
 
