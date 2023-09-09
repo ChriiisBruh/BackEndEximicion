@@ -7,17 +7,17 @@ app.use(express.json());
 const users = [];
 const reservations = [];
 const { v4: uuidv4 } = require('uuid');
-
+// Obtiene todos los usuarios
 app.get('/api/users', (req, res) => {
     res.json(users);
   });
-
+//Obtiene un usuario por su id
 app.get('/api/users/:id', (req,res) => {
     const user = users.find(u => u.id === req.params.id);
     if (!user) return res.status(404).send('Usuario no encontrado');
     res.json(user);
 });
-
+//Agrega un usuario
 app.post('/api/users', (req,res) =>{
     const user = {
         id: uuidv4(),
@@ -27,7 +27,7 @@ app.post('/api/users', (req,res) =>{
     users.push(user);
     res.status(201).json(user);
 });
-
+//Actualiza un usuario por su id
 app.put('/api/users/:id', (req, res) => {
     const userId = req.params.id;
     const user = users.find(u => u.id === userId);
@@ -36,21 +36,21 @@ app.put('/api/users/:id', (req, res) => {
       return res.status(404).send('Usuario no encontrado');
     }
   
-    // Realiza la actualización del usuario
     user.name = req.body.name;
     user.email = req.body.email;
     res.json(user);
   });
 
-  app.delete('/api/users/:id', (req, res) => {
+// Elimina un usuario por su id
+app.delete('/api/users/:id', (req, res) => {
     const user = users.find(u => u.id === req.params.id);
     if (!user) return res.status(404).send('Usuario no encontrado');
     const index = users.indexOf(user);
     users.splice(index, 1);
     res.json(user);
-  });
+});
 
-  app.post('/api/reservations', (req,res) => {
+app.post('/api/reservations', (req,res) => {
     const reservation = {
         id : uuidv4(),
         userId : req.body.userId,
@@ -60,14 +60,14 @@ app.put('/api/users/:id', (req, res) => {
     };
     reservations.push(reservation);
     res.status(201).json(reservation)
-  });
+});
 
-  app.get('/api/reports/:userId'), (req,res)=>{
+app.get('/api/reports/:userId'), (req,res)=>{
     const userId = req.params.userId;
     const userReservations = reservations.filter(r= r.userId === userId);
 
     res.json(userReservations);
-  }
+}
 
 // Datos semilla para usuarios
 const seedUsers = [
@@ -117,11 +117,6 @@ const seedReservations = [
   users.push(...seedUsers);
   reservations.push(...seedReservations);
   
-
-
-
-
-
 
 app.listen(port, () => {
     console.log(`API  en el puerto ${port}`);
