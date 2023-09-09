@@ -12,7 +12,7 @@ Asegúrate de tener instalado lo siguiente antes de comenzar:
 1. Clona el repositorio en tu máquina local:
    
    ```bash
-   git clone https://github.com/tuusuario/tuproyecto.git](https://github.com/ChriiisBruh/BackEndEximicion.git
+   git clone https://github.com/ChriiisBruh/BackEndEximicion.git
    
 2. Dentro de "index.js", ejecute el comando:
    npm install
